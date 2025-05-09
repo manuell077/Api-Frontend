@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+   <header class="encabezado">
+    <ul class="lista">
+        <li class="lista__item"><a class="lista__link" href="usuarios.html">Usuarios</a></li>
+        <li class="lista__item"><a class="lista__link" href="generos.html">Generos</a></li>
+        <li class="lista__item"><a class="lista__link" href="ciudades.html">Ciudades</a></li>
+        <li class="lista__item"><a class="lista__link" href="lenguajes.html">Lenguajes</a></li>
+        
+    </ul>
+    </header>
+    <h1 class="titulo">INGRESAR USUARIO</h1>
+    <!--Formulario-->
+    <form  action="#" novalidate>
+        <div class="formulario">
+            <div class="textos">
+            <label for="documento">Documento</label>
+            <span class="textos__espacios"></span>
+            <label for="nombreUsuario">Nombre de usuario</label>
+            <span class="textos__espacios"></span>
+            <label for="apellido">Apellido</label>
+            <span class="textos__espacios"></span>
+            <label for="telefono">Telefono</label>
+            <span class="textos__espacios"></span>
+            <label for="contrasena">contrasena</label>
+            <span class="textos__espacios"></span>
+            <label for="Femenino">Femenino</label>
+            <span class="textos__espacios"></span>
+            <label for="Masculino">Masculino</label>
+            <span class="textos__espacios"></span>
+            <label for="ciudad">Ciudad</label>
+            <span class="textos__espacios"></span>
+            <label for="python">Python</label>
+            </div>
+            
+            <div class="entradas">
+            <input type="text"  id="documento" name="documento" required>
+            <span class="entradas__espacios"></span>
+            <input type="text" id="nombreUsuario" name="nombreUsuario" required>
+            <span class="entradas__espacios"></span>
+            <input type="text" id="apellido" name="apellido">
+            <span class="entradas__espacios"></span>
+            <input type="text" id="telefono" name="telefono">
+            <span class="entradas__espacios"></span>
+            <input type="text" id="contrasena" name="contrasena">
+            <span class="entradas__espacios"></span>
+            <input type="radio" id="Femenino" name="genero">
+            <span class="entradas__espacios"></span>
+            <input type="radio" id="Masculino" name="genero">
+            <span class="entradas__espacios"></span>
+            <select name="ciudad">
+             <option selected disabled hidden>Seleccione Una ciudad</option>
+            </select>
+            <span class="entradas__espacios"></span>
+            <input type="checkbox" id="python" name="lenguaje">
+            </div>
+        </div>
+       <button type="submit" class="botonEnviar">Enviar </button>
+    </form>
+
+
+    
+    
+    <script src="Validation/Usuario.js" type="module"></script>
+
+</body>
+</html>
