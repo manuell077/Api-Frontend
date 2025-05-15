@@ -61,36 +61,20 @@
     width: 500px;
     border-radius: 10px;
     height: 50%;
+    flex-direction: column;
     /* gap: 40px; */
-    justify-content: center;
-    align-items: center;
+    gap: 10px;
     background-color: antiquewhite;
     padding: 2%;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.textos{
-
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    width: 490px;
+.formulario__entrada{
+    height: 30px;
 }
 
-.entradas{
-    display: flex;
-    justify-content: left;
-    flex-direction: column;
-    align-items: center;
-    
-}
-.textos__espacios{
-    height: 25px;
-}
-.entradas__espacios{
-    height: 28px;
-}
+
+
 
 .botonEnviar{
     width: 100px;
@@ -107,12 +91,49 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+.radios{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+}
+
+.radiosContenido{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.formulario__textoLenguaje{
+    font-weight: normal;
+}
+
+.lenguajes__contenido{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
 /*Estilos para errores*/
 
 .errorCampo{
     
     border: solid 3px red;
 }
+
+
+
+
+.mensajeError{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+    color: red;
+
+}
+
+
 
     
     
