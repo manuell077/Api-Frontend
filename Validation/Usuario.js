@@ -1,4 +1,4 @@
-import {  validar, validarContrasena, validarLetras, validarNumeroDocumento} from "../Modules/moduloUsuario.js"
+import {  validar, validarContrasena, validarLetras, validarNumeroDocumento,desenfoque} from "../Modules/moduloUsuario.js"
 
 const formu = document.querySelector('form')
 const documento = document.querySelector('[name=documento]') 
@@ -16,6 +16,10 @@ apellido.addEventListener('keypress',validarLetras)
 telefono.addEventListener('keypress',validarNumeroDocumento)
 
 
-
+documento.addEventListener('blur',desenfoque)
+nombre_usuario.addEventListener('blur',desenfoque)
+contrasena.addEventListener('blur',desenfoque)
+apellido.addEventListener('blur',desenfoque)
+telefono.addEventListener('blur',desenfoque)
 
 formu.addEventListener("submit",validar)

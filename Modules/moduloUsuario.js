@@ -168,3 +168,26 @@ export const validarContrasena = (event)=>{
     }
 }
 
+export const desenfoque = (event)=>{
+    
+  if(event.target.value){
+    event.target.classList.remove("errorCampo")
+  }
+
+}
+
+// export const crearTabla = (event)=>{
+
+//     const tabla = document.createElement('table')
+//     const header =  document.createElement('thead')
+//     const thId = document.createElement('th')
+//     const thDocumento = document.createElement('th')
+//     const thNombreUsuario = document.createElement('th')
+//     const thApellido = document.createElement('th')
+//     const thTelefono = document.createElement('th')
+//     const thGenero = document.createElement('th')
+//     const thLenguaje = document.createElement('th')
+
+
+
+// } 
