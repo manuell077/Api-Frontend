@@ -134,6 +134,34 @@
 }
 
 
-
+/*Estilos para las tablas */
     
+.tabla{
+    margin: 60px auto;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 1px solid black;
+    border-radius: 15px;
+    border-collapse:collapse ;
+}
+
+
+
+.encabezadoTabla th{
+    padding: 15px;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.encabezadoTabla th:last-child{
+    border-right: none;
+}
+
+
+.fila{
+    border-bottom: 2px solid black;
+}
+
+th{
+    border-right: 1px solid black;
+}
     

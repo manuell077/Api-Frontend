@@ -1,5 +1,7 @@
 import {  validar, validarContrasena, validarLetras, validarNumeroDocumento,desenfoque} from "../Modules/moduloUsuario.js"
 
+import { CrearTabla ,cargarCiudades,cargarGenero, cargarLenguajes} from "../CargarDatos/cargarUsuarios.js";
+
 const formu = document.querySelector('form')
 const documento = document.querySelector('[name=documento]') 
 const nombre_usuario = document.querySelector('[name=nombreUsuario]');
@@ -7,7 +9,10 @@ const apellido = document.querySelector('[name=apellido]')
 const telefono = document.querySelector('[name=telefono]')
 const contrasena = document.querySelector('[name=contrasena]')
 
-
+CrearTabla();
+cargarGenero();
+cargarCiudades();
+cargarLenguajes();
 
 documento.addEventListener('keypress',validarNumeroDocumento)
 nombre_usuario.addEventListener('keypress',validarLetras)
