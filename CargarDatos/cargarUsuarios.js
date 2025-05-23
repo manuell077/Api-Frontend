@@ -11,6 +11,8 @@ export const cargarCiudades = async ()=>{
      ciudades.data.forEach(ciudad =>{
         let opcion = document.createElement("option")
         opcion.textContent = ciudad.ciudad;
+        opcion.setAttribute('name',"ciudad")
+        opcion.setAttribute('required',true)
         opcion.setAttribute('value',ciudad.id_ciudad)
         select.append(opcion)
      })
@@ -138,6 +140,7 @@ export const CrearTabla = async ()=>{
     /*Creacion del cuerpo */
     const tBody = document.createElement('tbody')
 
+
     usuarios.data.forEach(usuario => {
         const filaCuerpo  = document.createElement("tr")
         filaCuerpo.classList.add('fila')
@@ -152,7 +155,7 @@ export const CrearTabla = async ()=>{
         const Ciudad = document.createElement("th") 
 
         generos.data.forEach(genero =>{
-             if(genero.id_genero == usuario.genero){
+             if(genero.id_genero == usuario.id_genero){
 
                 Genero.textContent = genero.genero
              } 
@@ -161,7 +164,7 @@ export const CrearTabla = async ()=>{
         })
 
         ciudades.data.forEach(ciudades =>{
-            if(ciudades.id_ciudad == usuario.ciudad){
+            if(ciudades.id_ciudad == usuario.id_ciudad){
                 
                 Ciudad.textContent = ciudades.ciudad;
             }
@@ -191,12 +194,31 @@ export const CrearTabla = async ()=>{
      const botonEditar = document.createElement("button")
      botonEditar.classList.add("botonesTabla__boton","editar");
      botonEditar.setAttribute("id",usuario.id_usuario)
+     botonEditar.setAttribute("name","btn_editar")
+     botonEditar.textContent = "Editar"
      
      divBotones.append(botonEditar)
+     
+     const botonEliminar = document.createElement("button")
+     botonEliminar.classList.add("botonesTabla__botonEliminar","eliminar")
+     botonEliminar.setAttribute("id",usuario.id_usuario)
+     botonEliminar.setAttribute("name","btn_eliminar")
+     botonEliminar.textContent = "Eliminar"
+     divBotones.append(botonEliminar)
+     
+
+    
 
      Opciones.append(divBotones)
      filaCuerpo.append(id,documento,nombreUsuario,Apellido,telefono,contrasena,Genero,Ciudad,Opciones)
+   
+      botonEditar.addEventListener('click',() =>{
+       
+      const id = botonEditar.getAttribute("id")  
 
+      window.location.href = `../Modules/ActualizarUsuario.html?id=${encodeURIComponent(id)}`
+      
+   })
 
     });
     
@@ -213,6 +235,14 @@ export const CrearTabla = async ()=>{
   
      body.append(tabla)
 
-
+   
     
+}
+
+export const TraerDatosSeleccionados = async (id)=>{
+      
+    const usuarioDatos = await get("usuarios");
+    
+
+
 }

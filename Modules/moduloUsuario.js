@@ -1,8 +1,8 @@
-import {get,post} from "../Api.js"
+import {get, postLenguajes, postUsuarios} from "../Api.js"
 //validacion de que los campos no esten vacios 
 
 
-export const validar = (e)=>{
+export const validar = async (e)=>{
     let info = {};
     e.preventDefault();
 
@@ -31,7 +31,7 @@ export const validar = (e)=>{
                      info[propiedad] = campo.value
                    }
 
-              }else if (campo.getAttribute('name') == "nombreUsuario" || campo.getAttribute('name') == "apellido"){
+              }else if (campo.getAttribute('name') == "nombre_usuario" || campo.getAttribute('name') == "apellido_usuario"){
                     if(validarLetras){
                       let propiedad = campo.getAttribute('name')
                      info[propiedad] = campo.value
@@ -67,11 +67,12 @@ export const validar = (e)=>{
 
               }else{
                 let propiedad = campo.getAttribute('name');
+                
                 info[propiedad] = campo.value;
               }
      
               break;           
-        }
+       }
    });
 
    const radio = [...campos].filter((elemento)=>{
@@ -80,7 +81,7 @@ export const validar = (e)=>{
 
    const radiosSeleccionados = radio.find((elemento)=>elemento.checked) || []
    
-   let primerPadre =    radio[0].parentElement;
+   let primerPadre = radio[0].parentElement;
    let segundopadre = primerPadre.parentElement;
    if(radiosSeleccionados.length === 0){
                 
@@ -96,8 +97,12 @@ export const validar = (e)=>{
       if(segundopadre.nextSibling.tagName == "SPAN"){
        segundopadre.nextSibling.remove()  
       }
-      let propiedad = e.target.getAttribute('name')
-      info[propiedad] = e.target.value
+     
+      
+      let propiedad = radiosSeleccionados.getAttribute('name')
+      
+      
+      info[propiedad] = radiosSeleccionados.value
     
    }
   
@@ -123,13 +128,28 @@ export const validar = (e)=>{
      if(checkAbuelo.nextSibling.tagName === "SPAN"){
           checkAbuelo.nextSibling.remove()
      }
-      
-     let propiedad = e.target.getAttribute('name');
-    info[propiedad] = e.target.value;
+     
+     let lenguajesSeleccionados = []
+    let propiedad = checkSeleccionado[0].getAttribute('name');
+     for(let i = 0; i < checkSeleccionado.length; i++ ){
+        
+     lenguajesSeleccionados[i]  = checkSeleccionado[i].value;
+        
+     
+     
+     }
+     info[propiedad] = lenguajesSeleccionados;
+    
+
+    
 
    }
    let cant_campos = contarCampos(e.target)
    if(Object.keys(info).length>=cant_campos){
+
+    Object.entries(info).forEach(([clave,valor])=>{
+           console.log(clave,valor)
+    })
     return info;
    }else return false;
     
@@ -139,29 +159,41 @@ export const validar = (e)=>{
 }
 
 export const agregarDB = async(event,endpoint)=>{
-    const info=await validar(event)
-    if(info!= false){
+    const info= await validar(event)
+    console.log(info);
+    
+    if(info){
 
-      const respuesta = await post(endpoint,info)
+      
+      const datosCambiados = {...info};
 
-              if (endpoint == "usuarios") {
-                console.log("Hola" +  info.id_lenguaje)
+      delete datosCambiados.id_lenguaje;
+      
+      const respuesta = await postUsuarios(endpoint,datosCambiados);
+            
+      console.log(respuesta);
+      
+            
+            if (endpoint == "usuarios") {
             for (let n = 0; n < info.id_lenguaje.length; n++) {
             let regi = {};
             let usu = await get("usuarios");
             let id_usu = usu.data[usu.data.length - 1].id_usuario;
 
+            id_usu=parseInt(id_usu);
+            let id_lenguaje=parseInt(info.id_lenguaje[n]);
+
             
-            regi["id_usuario"] = parseInt(id_usu);
-            regi["id_lenguaje"] = parseInt(info.id_lenguaje[n]);
-
-            console.log("Enviando:", regi); 
-
-            await post("LenguajesUsuarios", regi);
+            regi["id_usuario"] = parseInt (id_usu);
+            regi["id_lenguaje"] = parseInt(id_lenguaje);
+            await postLenguajes("LenguajesUsuarios", regi);
             }
         }
-        if(respuesta.status==200)alert("El registro se ha realizaco correctamente");
+        if(respuesta.status == 200)alert("El registro se ha realizaco correctamente");
         else alert("Ocurrio un error al guardar el registro")
+
+    }else{
+      
     }
     
 
