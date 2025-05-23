@@ -1,4 +1,4 @@
-import {  validar, validarContrasena, validarLetras, validarNumeroDocumento,desenfoque} from "../Modules/moduloUsuario.js"
+import {  validar, validarContrasena, validarLetras, validarNumeroDocumento,desenfoque, agregarDB} from "../Modules/moduloUsuario.js"
 
 import { CrearTabla ,cargarCiudades,cargarGenero, cargarLenguajes} from "../CargarDatos/cargarUsuarios.js";
 
@@ -27,4 +27,4 @@ contrasena.addEventListener('blur',desenfoque)
 apellido.addEventListener('blur',desenfoque)
 telefono.addEventListener('blur',desenfoque)
 
-formu.addEventListener("submit",validar)
+formu.addEventListener("submit",(event)=>{agregarDB(event,"usuarios")})

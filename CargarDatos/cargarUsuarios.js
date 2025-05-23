@@ -180,8 +180,23 @@ export const CrearTabla = async ()=>{
 
 
         
-        filaCuerpo.append(id,documento,nombreUsuario,Apellido,telefono,contrasena,Genero,Ciudad)
+        
         tBody.append(filaCuerpo)
+
+
+     const Opciones = document.createElement('th')
+
+     const divBotones = document.createElement('div')
+
+     const botonEditar = document.createElement("button")
+     botonEditar.classList.add("botonesTabla__boton","editar");
+     botonEditar.setAttribute("id",usuario.id_usuario)
+     
+     divBotones.append(botonEditar)
+
+     Opciones.append(divBotones)
+     filaCuerpo.append(id,documento,nombreUsuario,Apellido,telefono,contrasena,Genero,Ciudad,Opciones)
+
 
     });
     
@@ -192,7 +207,8 @@ export const CrearTabla = async ()=>{
     /*Añadir clases a los elementos */
      tabla.classList.add('tabla')
      header.classList.add('encabezadoTabla')
-
+     
+     
      
   
      body.append(tabla)
